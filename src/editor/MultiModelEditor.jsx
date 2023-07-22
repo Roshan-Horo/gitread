@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 // import files from "./codeFiles.js";
-import { fileLanguage } from "../utils/file-icon.js";
+import { fileLanguage } from "../utils/fileNameHelper.js";
 import Editor from "@monaco-editor/react";
 import "./MultiModelEditor.css";
 import {XIcon} from '@primer/octicons-react'
 import {Button} from '@primer/react'
+import {getTheFileNameFromPath} from '../utils/fileNameHelper.js'
 
 const MultiModelEditor = ({files, activeFileName, setActiveFile, deleteFileFromFiles}) => {
   const editorRef = useRef(null);
@@ -29,7 +30,6 @@ const MultiModelEditor = ({files, activeFileName, setActiveFile, deleteFileFromF
     deleteFileFromFiles(filename)
     const newActiveFileArr = Object.keys(files)
     if(newActiveFileArr.length > 0){
-      console.log('new : ', newActiveFileArr[0])
       activeFile = files[newActiveFileArr[0]]
     }
     
@@ -44,7 +44,7 @@ const MultiModelEditor = ({files, activeFileName, setActiveFile, deleteFileFromF
             key={file}
             onClick={() => handleActiveFileClick(file)}
           >
-            {file}
+            {getTheFileNameFromPath(file)}
             <Button size="small" onClick={() => handleRemoveFile(file)}>
               <XIcon />
             </Button>

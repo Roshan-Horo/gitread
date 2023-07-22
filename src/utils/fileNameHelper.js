@@ -1,24 +1,3 @@
-export const fileIcon = (fileName) => {
-  const fileNameArr = fileName.split('.') 
-  const ext = fileNameArr[fileNameArr.length - 1]
-  if(ext === undefined || null){
-    return  'https://codedamn.com/assets/images/svg/folder.svg'
-  }else{
-      switch(ext){
-          case 'html': return 'https://codedamn.com/assets/images/svg/html5.svg';
-          break;
-          case 'css': return 'https://codedamn.com/assets/images/svg/css3.svg';
-          break;
-          case 'json': return 'https://codedamn.com/assets/images/svg/json.svg'
-          break;
-          case 'js': return 'https://codedamn.com/assets/images/svg/javascript.svg'
-          break;
-          case 'jsx': return 'https://codedamn.com/assets/images/svg/javascript.svg'
-          break;
-          default: return 'https://codedamn.com/assets/images/svg/file.svg'
-      }
-  }
-}
 
 export const fileLanguage = (ext) => {
   if(ext === undefined || null){
@@ -81,7 +60,15 @@ export const fileLanguage = (ext) => {
 }
 
 export function getFileLanguage(filename){
-  const fileNameArr = filename.split('.')
+  const fileNameArr = filename?.split('.')
   const arrLen = fileNameArr.length 
   return fileLanguage(fileNameArr[arrLen - 1])
  }
+
+export function getTheFileNameFromPath(path){
+  // if filename like 'HEAD:src/website/config.json'
+  // then return filename only like : config.json
+
+  const pathArr = path?.split('/')
+  return pathArr[pathArr.length - 1]
+}

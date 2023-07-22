@@ -2,7 +2,7 @@ import { Box, Spinner, TreeView } from "@primer/react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRepoData } from "../utils/requestHandler";
 import { FileIcon } from "@primer/octicons-react";
-import { getFileLanguage } from "../utils/file-icon";
+import { getFileLanguage, getTheFileNameFromPath } from "../utils/fileNameHelper";
 
 function Entry({ path, file, param, handleSetFiles }) {
   // Entry is for subfolder which is recursively getting it's subfolder and file
@@ -23,7 +23,14 @@ function Entry({ path, file, param, handleSetFiles }) {
         if (file.type === "tree") {
           dirArray.push(file);
         } else {
-          filesArray.push(file);
+          // doing this because, if we set same filename on files state, program 
+          // will not running as aspected e.g: In monorepe, if we open package.json 
+          // and then open package.json of any package, it didn't open that file 
+          const newFile = {
+            ...file,
+            name : `${newBranchName}/${file.name}`
+          } 
+          filesArray.push(newFile);
         }
       });
 
@@ -68,7 +75,7 @@ function Entry({ path, file, param, handleSetFiles }) {
                 <TreeView.LeadingVisual>
                   <FileIcon />
                 </TreeView.LeadingVisual>
-                {newFile.name}
+                {getTheFileNameFromPath(newFile.name)}
               </TreeView.Item>
             );
           })}
