@@ -79,18 +79,23 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
       <Box bg="canvas.default" width="100%" minHeight="100vh">
         <PageLayout width="100%">
           <PageLayout.Header>
-            <Header>
+            <Header
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
               <Header.Item>
                 <Header.Link href="#" fontSize={2}>
                   {/* <Octicon icon={MarkGithubIcon} size={32} sx={{mr: 2}} /> */}
                   <span>GitRead</span>
                 </Header.Link>
               </Header.Item>
-              <Header.Item full>Menu</Header.Item>
               <Header.Item sx={{ mr: 0 }}>
                 <Avatar
                   src="https://github.com/octocat.png"
-                  size={20}
+                  size={80}
                   square
                   alt="@octocat"
                 />
