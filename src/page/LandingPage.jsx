@@ -48,7 +48,7 @@ function SearchRepo({ param, setParam, setShowEditor }) {
     <Box>
       {isSearchHappened ? (
         <div>
-          <div>Searched, Loading...</div>
+          <div id="header">Searched, Loading...</div>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -77,20 +77,27 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
   return (
     <>
       <Box bg="canvas.default" width="100%" minHeight="100vh">
-        <PageLayout width="100%">
+        <PageLayout>
           <PageLayout.Header>
-            <Header>
+            <Header
+              width="100vw"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
               <Header.Item>
                 <Header.Link href="#" fontSize={2}>
                   {/* <Octicon icon={MarkGithubIcon} size={32} sx={{mr: 2}} /> */}
-                  <span>GitRead</span>
+                  <span id="git-read">GitRead</span>
                 </Header.Link>
               </Header.Item>
-              <Header.Item full>Menu</Header.Item>
+              {/* <Header.Item full>Menu</Header.Item> */}
               <Header.Item sx={{ mr: 0 }}>
                 <Avatar
                   src="https://github.com/octocat.png"
-                  size={20}
+                  size={80}
                   square
                   alt="@octocat"
                 />
