@@ -6,11 +6,13 @@ import "./SplitContainer.css";
 import Files from "./Files";
 import MultiModelEditor from "../editor/MultiModelEditor.jsx";
 
-const SplitContainer = ({ param }) => {
+const SplitContainer = ({ param, isSidebarCollapsed }) => {
   // storing editor active file ( the code file where use see in the editor)
   const [activeFile, setActiveFile] = useState("");
   // storing all the files that are opened in editor ( each file tabs in the editor)
   const [files, setFiles] = useState({});
+
+  const splitSizes = isSidebarCollapsed ? [0,100] : [15,85]
 
   function deleteFileFromFiles(filename) {
     setFiles((current) => {
@@ -23,7 +25,7 @@ const SplitContainer = ({ param }) => {
     <>
       <Split
         className="container"
-        sizes={[15, 85]}
+        sizes={splitSizes}
         minSize={0}
         expandToMin={false}
         gutterSize={5}

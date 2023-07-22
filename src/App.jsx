@@ -21,7 +21,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         {showEditor ? (
-          <CodePage param={param} />
+          <CodePage param={param} setShowEditor={setShowEditor} />
         ) : (
           <LandingPage
             param={param}

@@ -4,7 +4,7 @@
 
   /* Misc */
   border-top: 1px solid #333333;
-  height: calc(100vh - 2.2rem);
+  height: calc(100vh - 3rem);
   background-color: #d4d4d4;
   width: 100%;
 }
@@ -13,7 +13,7 @@
   width: 75%;
 
   /* Misc */
-  background-color: #121212;
+  background-color: #22272E;
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: #777 #555;
@@ -90,7 +90,7 @@ iframe{
 }
 
 .editor, .terminal{
-  background-color: #121212;
+  background-color: #22272E;
 }
 
 
