@@ -16,40 +16,44 @@ export default function CodePage({ param, setShowEditor }) {
           sx={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
           }}
         >
           <Header.Item>
             <div className="repoNameDiv">{`${param.owner} / ${param.name}`}</div>
             <div>{`Branch`}</div>
           </Header.Item>
-          <Header.Item>
+          <Header.Item
+            sx={{
+              justifyContent: "flex-end",
+            }}
+          >
             <div className="closeBtnDiv">
               <Button variant="danger" onClick={() => setShowEditor(false)}>
                 Close
               </Button>
             </div>
+            <div className="repoInfoDiv">
+              <div>
+                {isSidebarCollapsed ? (
+                  <IconButton
+                    onClick={() => setIsSidebarCollapsed(false)}
+                    aria-label="expand"
+                    icon={SidebarExpandIcon}
+                    sx={{ ml: 2 }}
+                  />
+                ) : (
+                  <IconButton
+                    onClick={() => setIsSidebarCollapsed(true)}
+                    aria-label="collapse"
+                    icon={SidebarCollapseIcon}
+                    sx={{ ml: 2 }}
+                  />
+                )}
+              </div>
+            </div>
           </Header.Item>
         </Header>
-        <div className="repoInfoDiv">
-          <div>
-            {isSidebarCollapsed ? (
-              <IconButton
-                onClick={() => setIsSidebarCollapsed(false)}
-                aria-label="expand"
-                icon={SidebarExpandIcon}
-                sx={{ ml: 2 }}
-              />
-            ) : (
-              <IconButton
-                onClick={() => setIsSidebarCollapsed(true)}
-                aria-label="collapse"
-                icon={SidebarCollapseIcon}
-                sx={{ ml: 2 }}
-              />
-            )}
-          </div>
-        </div>
       </div>
       <SplitContainer param={param} isSidebarCollapsed={isSidebarCollapsed} />
     </Box>
