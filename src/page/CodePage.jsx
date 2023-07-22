@@ -20,12 +20,15 @@ export default function CodePage({ param, setShowEditor }) {
           }}
         >
           <Header.Item>
-            <Textarea>Owner</Textarea>
-            <Textarea>Repo Name</Textarea>
-            <Textarea>Branch</Textarea>
+            <div className="repoNameDiv">{`${param.owner} / ${param.name}`}</div>
+            <div>{`Branch`}</div>
           </Header.Item>
           <Header.Item>
-            <Button>Close</Button>
+            <div className="closeBtnDiv">
+              <Button variant="danger" onClick={() => setShowEditor(false)}>
+                Close
+              </Button>
+            </div>
           </Header.Item>
         </Header>
         <div className="repoInfoDiv">
@@ -46,13 +49,6 @@ export default function CodePage({ param, setShowEditor }) {
               />
             )}
           </div>
-          <div className="repoNameDiv">{`${param.owner} / ${param.name}`}</div>
-          <div>{`Branch`}</div>
-        </div>
-        <div className="closeBtnDiv">
-          <Button variant="danger" onClick={() => setShowEditor(false)}>
-            Close
-          </Button>
         </div>
       </div>
       <SplitContainer param={param} isSidebarCollapsed={isSidebarCollapsed} />
