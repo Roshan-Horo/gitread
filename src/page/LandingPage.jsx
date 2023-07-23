@@ -138,7 +138,7 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                   setShowEditor={setShowEditor}
                 />
                 {/* <Button>Your Previous visited Repos</Button> */}
-                <ActionMenu>
+                {/* <ActionMenu>
                   <ActionMenu.Button>Your previous visited repos</ActionMenu.Button>
 
                   <ActionMenu.Overlay>
@@ -150,7 +150,7 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                       <ActionList.Item variant="danger">Delete file</ActionList.Item>
                     </ActionList>
                   </ActionMenu.Overlay>
-                </ActionMenu>
+                </ActionMenu> */}
               </Box>
             </Box>
           </PageLayout.Content>

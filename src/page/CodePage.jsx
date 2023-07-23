@@ -31,7 +31,7 @@ export default function CodePage({ param, setShowEditor }) {
             )}
           </div>
           <div className="repoNameDiv">{`${param.owner} / ${param.name}`}</div>
-          <div>{`Branch`}</div>
+          {/* <div>{`Branch`}</div> */}
         </div>
         <div className="closeBtnDiv">
           <Button variant="danger" onClick={() => setShowEditor(false)}>
