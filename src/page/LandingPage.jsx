@@ -7,7 +7,6 @@ import {
   TextInput,
   Text,
   Button,
-  // Stack,
 } from "@primer/react";
 import { useEffect, useState } from "react";
 import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
