@@ -2,12 +2,25 @@ import {
   Box,
   PageLayout,
   Header,
+  Heading,
   Avatar,
   FormControl,
   TextInput,
   Text,
   Button,
+  IconButton,
+  Link,
+  ActionMenu,
+  ActionList,
+
 } from "@primer/react";
+import GithubGraphQL from '../assets/github-graphql.jpg';
+import GithubPrimer from '../assets/github-primer.jpg';
+import Monaco from '../assets/monaco-logo.png';
+import ReactQuery from '../assets/react-query-logo.png';
+import {MarkGithubIcon} from '@primer/octicons-react'
+
+
 import { useEffect, useState } from "react";
 import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
 
@@ -45,15 +58,16 @@ function SearchRepo({ param, setParam, setShowEditor }) {
   }
 
   return (
-    <Box>
+    <Box width="100%" sx={{p: 8, display: "flex", flexDirection: 'column', alignItems: 'center'}}>
       {isSearchHappened ? (
-        <div>
+        <Box>
           <div>Searched, Loading...</div>
-        </div>
+        </Box>
       ) : (
+        <Box width="50%">
         <form onSubmit={handleSubmit}>
           <FormControl>
-            <FormControl.Label>Enter Github Repo Link</FormControl.Label>
+            <FormControl.Label sx={{fontSize: "18px"}}>Enter Github Repo Link</FormControl.Label>
             <TextInput
               monospace
               size="large"
@@ -62,12 +76,17 @@ function SearchRepo({ param, setParam, setShowEditor }) {
               name="github_link"
               placeholder="e.g. https://github.com/facebook/react"
               autoComplete="github link"
+              sx={{margin: "10px 0", padding: "0"}}
             />
+            <Box width="100%" sx={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
             <Button type="submit" variant="primary">
               Submit
             </Button>
+            </Box>
+      
           </FormControl>
         </form>
+        </Box>
       )}
     </Box>
   );
@@ -79,36 +98,103 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
       <Box bg="canvas.default" width="100%" minHeight="100vh">
         <PageLayout width="100%">
           <PageLayout.Header>
-            <Header>
-              <Header.Item>
-                <Header.Link href="#" fontSize={2}>
-                  {/* <Octicon icon={MarkGithubIcon} size={32} sx={{mr: 2}} /> */}
-                  <span>GitRead</span>
-                </Header.Link>
-              </Header.Item>
-              <Header.Item full>Menu</Header.Item>
-              <Header.Item sx={{ mr: 0 }}>
-                <Avatar
-                  src="https://github.com/octocat.png"
-                  size={20}
-                  square
-                  alt="@octocat"
+            <Box sx={{p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+              <div>
+              <Text as="p" sx={{fontWeight: 'bold', fontSize: "25px"}}>
+                GitRead
+              </Text>
+              </div>
+              <div>
+                <Link target="_blank" href="https://github.com/Roshan-Horo/gitread">
+                 <Avatar
+                  src="https://avatars.githubusercontent.com/github"
+                  size={30}
+                  alt="github link of repo"
                 />
-              </Header.Item>
-            </Header>
+                </Link>
+              </div>
+            </Box>
           </PageLayout.Header>
           <PageLayout.Content>
-            <Box bg="canvas.default" width="100%" p={5}>
-              <SearchRepo
-                param={param}
-                setParam={setParam}
-                setShowEditor={setShowEditor}
-              />
+            <Box bg="canvas.default" width="100%" >
+              <Box
+                direction="vertical"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <Heading sx={{fontSize: "30px", textAlign: 'center'}}>
+                  Explore multiple GitHub repos
+                  <br/>
+                   in the world of open source
+                  effortlessly.
+                </Heading>
+                <SearchRepo
+                  param={param}
+                  setParam={setParam}
+                  setShowEditor={setShowEditor}
+                />
+                {/* <Button>Your Previous visited Repos</Button> */}
+                <ActionMenu>
+                  <ActionMenu.Button>Your previous visited repos</ActionMenu.Button>
+
+                  <ActionMenu.Overlay>
+                    <ActionList>
+                      <ActionList.Item onSelect={event => console.log('New file')}>New file</ActionList.Item>
+                      <ActionList.Item>Copy link</ActionList.Item>
+                      <ActionList.Item>Edit file</ActionList.Item>
+                      <ActionList.Divider />
+                      <ActionList.Item variant="danger">Delete file</ActionList.Item>
+                    </ActionList>
+                  </ActionMenu.Overlay>
+                </ActionMenu>
+              </Box>
             </Box>
           </PageLayout.Content>
-
-          <PageLayout.Footer>
-            <Text>Footer</Text>
+          <PageLayout.Footer sx={{paddingTop: "0px"}}>
+            <Box width="100%" sx={{fontSize: "12px",display: "flex",flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>Made With</Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                "& > *": {
+                  margin: "30px", /* Add margin between the Avatar components */
+                },
+              }}
+            >
+              <Box width="100%" sx={{display: "flex",flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+               <Avatar square size="50" src={GithubGraphQL} />
+               <Text as="p" sx={{fontSize: "12px",fontWeight: 'bold', textAlign: 'center'}}>
+                  Github 
+                  <br />
+                  GraphQL API
+                </Text>
+              </Box>
+              <Box width="100%" sx={{display: "flex",flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+               <Avatar square size="50" src={GithubPrimer} />
+               <Text as="p" sx={{fontSize: "12px",fontWeight: 'bold', textAlign: 'center'}}>
+                  Github 
+                  <br />
+                  Primer React
+                </Text>
+              </Box>
+              <Box width="100%" sx={{display: "flex",flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+               <Avatar square size="50" src={Monaco} />
+               <Text as="p" sx={{fontSize: "12px",fontWeight: 'bold', textAlign: 'center'}}>
+                  Monaco
+                </Text>
+              </Box>
+              <Box width="100%" sx={{display: "flex",flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+               <Avatar square size="50" src={ReactQuery} />
+               <Text as="p" sx={{fontSize: "12px",fontWeight: 'bold', textAlign: 'center'}}>
+                  React Query
+                </Text>
+              </Box>
+            </Box>
           </PageLayout.Footer>
         </PageLayout>
       </Box>
