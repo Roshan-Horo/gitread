@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // Import Pages
 import LandingPage from "./page/LandingPage";
 import CodePage from "./page/CodePage";
+import { useLocalStorageState } from "./hooks/useLocalStorage";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,11 @@ function App() {
   });
   const [showEditor, setShowEditor] = useState(false);
 
+  // load the localstorage variables
+  const [local, setLocal] = useLocalStorageState('repos')
+
+  console.log('local : ', local)
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
@@ -27,6 +33,7 @@ function App() {
             param={param}
             setParam={setParam}
             setShowEditor={setShowEditor}
+            setLocal={setLocal}
           />
         )}
         <ReactQueryDevtools initialIsOpen={false} />

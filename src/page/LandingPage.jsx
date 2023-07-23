@@ -24,7 +24,7 @@ import {MarkGithubIcon} from '@primer/octicons-react'
 import { useEffect, useState } from "react";
 import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
 
-function SearchRepo({ param, setParam, setShowEditor }) {
+function SearchRepo({ param, setParam, setShowEditor, setLocal }) {
   const [isSearchHappened, setIsSearchHappened] = useState(false);
 
   async function handleSubmit(event) {
@@ -37,6 +37,7 @@ function SearchRepo({ param, setParam, setShowEditor }) {
     const searchQuery = fieldValues["github_link"];
     const owner = searchQuery.split("/")[3];
     const name = searchQuery.split("/")[4];
+    const repoNameForLocal = `${owner}/${name}`
     const queryVar = {
       owner,
       name,
@@ -54,6 +55,15 @@ function SearchRepo({ param, setParam, setShowEditor }) {
       setParam(queryVar);
       setIsSearchHappened(true);
       setShowEditor(true);
+      setLocal(current => {
+        // const result = current?.findIndex(item => item === repoNameForLocal)
+        // if(result === -1){
+
+        // }
+        current?.unshift(repoNameForLocal)
+        console.log('current local : ', current)
+        return current
+      })
     }
   }
 
@@ -92,7 +102,7 @@ function SearchRepo({ param, setParam, setShowEditor }) {
   );
 }
 
-export default function LandingPage({ param, setParam, setShowEditor }) {
+export default function LandingPage({ param, setParam, setShowEditor, setLocal }) {
   return (
     <>
       <Box bg="canvas.default" width="100%" minHeight="100vh">
@@ -136,6 +146,7 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                   param={param}
                   setParam={setParam}
                   setShowEditor={setShowEditor}
+                  setLocal={setLocal}
                 />
                 {/* <Button>Your Previous visited Repos</Button> */}
                 <ActionMenu>
