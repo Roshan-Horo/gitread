@@ -126,17 +126,6 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                   justifyContent: "center"
                 }}
               >
-                {/* <Text
-                  sx={{
-                    fontSize: "30px",
-                    weight: "bold",
-                  }}
-                >
-                  Explore multiple GitHub repos
-                  <br />
-                  in the world of open source
-                  effortlessly.
-                </Text> */}
                 <Heading sx={{fontSize: "30px", textAlign: 'center'}}>
                   Explore multiple GitHub repos
                   <br/>
@@ -205,16 +194,6 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
                   React Query
                 </Text>
               </Box>
-              {/* <Box>
-
-              </Box>
-              <Box>
-
-              </Box>
-             
-              <Avatar square size="50" src={GithubPrimer} />
-              <Avatar square size="50" src={Monaco} />
-              <Avatar square size="50" src={ReactQuery} /> */}
             </Box>
           </PageLayout.Footer>
         </PageLayout>
