@@ -7,7 +7,14 @@ import {
   TextInput,
   Text,
   Button,
+
 } from "@primer/react";
+import GithubGraphQL from '../assets/github-graphql.jpg';
+import GithubPrimer from '../assets/github-primer.jpg';
+import Monaco from '../assets/monaco-logo.png';
+import ReactQuery from '../assets/react-query-logo.png';
+
+
 import { useEffect, useState } from "react";
 import { fetchRepoData, checkRepoData } from "../utils/requestHandler";
 
@@ -108,7 +115,21 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
           </PageLayout.Content>
 
           <PageLayout.Footer>
-            <Text>Footer</Text>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                "& > *": {
+                  margin: "30px", /* Add margin between the Avatar components */
+                },
+              }}
+            >
+              <Avatar square size="50" src={GithubGraphQL} />
+              <Avatar square size="50" src={GithubPrimer} />
+              <Avatar square size="50" src={Monaco} />
+              <Avatar square size="50" src={ReactQuery} />
+            </Box>
           </PageLayout.Footer>
         </PageLayout>
       </Box>
