@@ -99,14 +99,34 @@ export default function LandingPage({ param, setParam, setShowEditor }) {
           </PageLayout.Header>
           <PageLayout.Content>
             <Box bg="canvas.default" width="100%" p={5}>
-              <SearchRepo
-                param={param}
-                setParam={setParam}
-                setShowEditor={setShowEditor}
-              />
+              <Box
+                direction="vertical"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "50px",
+                }}
+              >
+                <Text
+                  sx={{
+                    fontSize: "30px",
+                    weight: "bold",
+                  }}
+                >
+                  Explore multiple GitHub repos in the world of open source
+                  effortlessly.
+                </Text>
+                <SearchRepo
+                  param={param}
+                  setParam={setParam}
+                  setShowEditor={setShowEditor}
+                />
+                <Button>Your Previous Repos</Button>
+              </Box>
             </Box>
           </PageLayout.Content>
-
           <PageLayout.Footer>
             <Text>Footer</Text>
           </PageLayout.Footer>
